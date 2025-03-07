@@ -11,7 +11,7 @@ const Header = ({ orderLength }) => {
 
     useEffect(() => {
         setAuth(window.localStorage.getItem("id") ? true : false);
-        fetch("http://localhost:3300/admindashboard/getallproducts")
+        fetch("https://e-commerce-backend-app.up.railway.app/admindashboard/getallproducts")
             .then(response => response.json())
             .then(data => setProducts(data.message))
             .catch(error => console.error("Error fetching products:", error));

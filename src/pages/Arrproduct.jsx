@@ -29,7 +29,7 @@ const ArrProduct = () => {
             return toast.warn("SignIn First Please!", { theme: "light" });
         }
         
-        const res1 = await axios.get(`http://localhost:3300/user/findone/67c08e3958df0fa5d0f3dfce`);
+        const res1 = await axios.get(`https://e-commerce-backend-app.up.railway.app/user/findone/67c08e3958df0fa5d0f3dfce`);
 
         for (let i = 0; i < res1.data.message.watchingList.length; i++) {
             if(res1.data.message.watchingList[i] === productid){
@@ -38,7 +38,7 @@ const ArrProduct = () => {
         }
 
         try {
-            await axios.post(`http://localhost:3300/user/addwacthinglist/${window.localStorage.getItem('id')}/${productid}`);
+            await axios.post(`https://e-commerce-backend-app.up.railway.app/user/addwacthinglist/${window.localStorage.getItem('id')}/${productid}`);
             return toast.success("Product Added To Your Watching List!", { theme: "light" });
         } catch (error) {
             console.error("Error adding to watchlist:", error);
@@ -52,7 +52,7 @@ const ArrProduct = () => {
         }
 
         try {
-            const allOrdersData = await axios.post(`http://localhost:3300/manageorder/allorders`);
+            const allOrdersData = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
     
             for (let i = 0; i < allOrders.length; i++) {
@@ -61,7 +61,7 @@ const ArrProduct = () => {
                     return toast.warn(`This Order Is Already Exist In Your Cart`, { theme: "light" });
                 }
             }
-            const res = await axios.post(`http://localhost:3300/manageorder/addorder`,{
+            const res = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/addorder`,{
                 userId: id,
                 itemId: productId 
             })
@@ -76,7 +76,7 @@ const ArrProduct = () => {
     const ReadAllData = async () => {
         SetLoading(true);
         try {
-            const response = await axios.get("http://localhost:3300/admindashboard/getallproducts", {
+            const response = await axios.get("https://e-commerce-backend-app.up.railway.app/admindashboard/getallproducts", {
                 headers: { authorization: "lkjfdafdsalkjfdalkfdlkjafdas" }
             });
 

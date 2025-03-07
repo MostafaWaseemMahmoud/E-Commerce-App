@@ -14,7 +14,7 @@ const Verify = () => {
     useEffect(() => {
         const userEmail = window.localStorage.getItem("email")
         // Send OTP via backend API
-        axios.post("http://localhost:3300/send-otp", { email: userEmail })
+        axios.post("https://e-commerce-backend-app.up.railway.app/send-otp", { email: userEmail })
             .then(response => {
             setOtp(response.data.otp);
             window.localStorage.setItem('otp',response.data.otp)
@@ -29,7 +29,7 @@ const Verify = () => {
 
         if (enteredOtp === storedOtp) {
             try {
-            axios.post("http://localhost:3300/user/add", { name, email, password }).then((res)=> {
+            axios.post("https://e-commerce-backend-app.up.railway.app/user/add", { name, email, password }).then((res)=> {
                 console.log(res);
                 window.localStorage.setItem("id" , res.data._id);
                 window.localStorage.removeItem('otp')

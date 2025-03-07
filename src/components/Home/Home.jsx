@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import ArrivalProducts from '../ArrivalProducts/Arrival';
 
 const Home = ({ setOrderLength }) => {
-    const BaseApi = "http://localhost:3300";
+    const BaseApi = "https://e-commerce-backend-app.up.railway.app/";
     const navigate = useNavigate();
     const [allProducts, setAllProducts] = useState([]);
     const [allCategories, setAllCategories] = useState([]);
@@ -20,7 +20,7 @@ const Home = ({ setOrderLength }) => {
     
     const updateOrderLength = async () => {
         try {
-            const response = await axios.post("http://localhost:3300/manageorder/allorders");
+            const response = await axios.post("https://e-commerce-backend-app.up.railway.app/manageorder/allorders");
             const allOrders = response.data.message;
             let count = allOrders.filter(order => order.userId === UserId).length;
             setOrderLength(count);

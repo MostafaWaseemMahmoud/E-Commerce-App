@@ -24,7 +24,7 @@ function App() {
     const fetchOrderLength = async () => {
       if (!userId) return;
       try {
-        const response = await axios.post("http://localhost:3300/manageorder/allorders");
+        const response = await axios.post("https://e-commerce-backend-app.up.railway.app/manageorder/allorders");
         const allOrders = response.data.message;
         const userOrders = allOrders.filter(order => order.userId === userId);
         setOrderLength(userOrders.length);

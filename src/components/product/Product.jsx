@@ -13,7 +13,7 @@ const Product = () => {
     const getProduct = async () => {
         setIsLoading(true);
         try {
-            const res = await axios.get(`http://localhost:3300/admindashboard/getoneproduct/${id}`);
+            const res = await axios.get(`https://e-commerce-backend-app.up.railway.app/admindashboard/getoneproduct/${id}`);
             setProduct(res.data.message);
         } catch (error) {
             console.error("Error fetching product:", error);
@@ -32,13 +32,13 @@ const Product = () => {
         }
 
         try {
-            const res1 = await axios.get(`http://localhost:3300/user/findone/${userId}`);
+            const res1 = await axios.get(`https://e-commerce-backend-app.up.railway.app/user/findone/${userId}`);
 
             if (res1.data.message.watchingList.includes(productid)) {
                 return toast.warn("This Product is Already in Your Watching List!", { theme: "light" });
             }
 
-            await axios.post(`http://localhost:3300/user/addwacthinglist/${userId}/${productid}`, {}, {
+            await axios.post(`https://e-commerce-backend-app.up.railway.app/user/addwacthinglist/${userId}/${productid}`, {}, {
                 headers: { authorization: "lkjfdafdsalkjfdlkjafdas" }
             });
 
@@ -55,7 +55,7 @@ const Product = () => {
         }
 
         try {
-            const allOrdersData = await axios.post(`http://localhost:3300/manageorder/allorders`);
+            const allOrdersData = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
     
             for (let i = 0; i < allOrders.length; i++) {
@@ -64,7 +64,7 @@ const Product = () => {
                     return toast.warn(`This Order Is Already Exist In Your Cart`, { theme: "light" });
                 }
             }
-            const res = await axios.post(`http://localhost:3300/manageorder/addorder`,{
+            const res = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/addorder`,{
                 userId: id,
                 itemId: productId 
             })

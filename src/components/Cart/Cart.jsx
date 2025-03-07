@@ -14,11 +14,11 @@ const Cart = () => {
 
     const getAllOrders = async () => {
         try {
-            const Allorders = await axios.post("http://localhost:3300/manageorder/allorders");
+            const Allorders = await axios.post("https://e-commerce-backend-app.up.railway.app/manageorder/allorders");
             const userOrders = Allorders.data.message.filter(order => order.userId === window.localStorage.getItem("id"));
 
             const productRequests = userOrders.map(order =>
-                axios.get(`http://localhost:3300/admindashboard/getoneproduct/${order.item.productId}`)
+                axios.get(`https://e-commerce-backend-app.up.railway.app/admindashboard/getoneproduct/${order.item.productId}`)
             );
 
             const productResponses = await Promise.all(productRequests);
@@ -47,7 +47,7 @@ const Cart = () => {
                 return;
             }
 
-            const response = await axios.post("http://localhost:3300/payment/create-payment-intent", {
+            const response = await axios.post("https://e-commerce-backend-app.up.railway.app/payment/create-payment-intent", {
                 price: productSalary,  // Ensure this is a valid number in dollars
                 quantity: products.length,  // Ensure this is a number
                 products: products  // Sending product details to the backend

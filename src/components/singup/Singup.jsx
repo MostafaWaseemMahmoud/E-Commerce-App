@@ -15,7 +15,7 @@ const Signup = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:3300/user/all",{
+        const res = await axios.get("https://e-commerce-backend-app.up.railway.app/user/all",{
             headers: {
                 Authorization: "lkjfdafdsalkjfdalkfdlkjafdas",
             }

@@ -7,7 +7,7 @@ const Login = () => {
     const Navigate = useNavigate();
     const [reqData,setReqData] = useState(null);
     useEffect(()=>{
-        axios.get("http://localhost:3300/user/all", {
+        axios.get("https://e-commerce-backend-app.up.railway.app/user/all", {
             headers: {
                 'Authorization': 'lkjfdafdsalkjfdalkfdlkjafdas',
             }

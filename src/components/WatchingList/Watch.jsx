@@ -18,7 +18,7 @@ const WatchingList = () => {
     const getAllProducts = async (productIds) => {
         try {
             const productRequests = productIds.map((productId) =>
-                axios.get(`http://localhost:3300/admindashboard/getoneproduct/${productId}`)
+                axios.get(`https://e-commerce-backend-app.up.railway.app/admindashboard/getoneproduct/${productId}`)
             );
 
             const responses = await Promise.all(productRequests);
@@ -39,7 +39,7 @@ const WatchingList = () => {
         }
 
         try {
-            const res1 = await axios.get(`http://localhost:3300/user/findone/${userId}`);
+            const res1 = await axios.get(`https://e-commerce-backend-app.up.railway.app/user/findone/${userId}`);
 
             const userWatchingList = res1.data.message.watchingList || [];
             setWatchingList(userWatchingList);
@@ -65,7 +65,7 @@ const WatchingList = () => {
         }
 
         try {
-            const allOrdersData = await axios.post(`http://localhost:3300/manageorder/allorders`);
+            const allOrdersData = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
     
             for (let i = 0; i < allOrders.length; i++) {
@@ -74,7 +74,7 @@ const WatchingList = () => {
                     return toast.warn(`This Order Is Already Exist In Your Cart`, { theme: "light" });
                 }
             }
-            const res = await axios.post(`http://localhost:3300/manageorder/addorder`,{
+            const res = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/addorder`,{
                 userId: id,
                 itemId: productId 
             })
