@@ -1,0 +1,9 @@
+* {
+  font-family: 'Handmade', sans-serif;
+}
+
+.container {
+  color: #2b3445;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+}

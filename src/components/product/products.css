@@ -1,0 +1,118 @@
+.loading {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: solid gray 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 90px;
+    margin-top: 90px;
+}
+
+.product-details .product-txt {
+    margin-left: 90px;
+    max-width: 100%;
+}
+
+.product-details .product-txt h1{
+    font-size: 45px;
+}
+
+.product-details .description {
+    color: gray;
+}
+.product-details .product-txt .category {
+    --tw-text-opacity: 1;
+    color: rgb(91 198 195 / var(--tw-text-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(198 247 239 / var(--tw-bg-opacity));
+    width: fit-content;
+    padding-bottom: .25rem;
+    padding-top: .25rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 35px;
+}
+.buyBtn {
+    border: 2px solid rgb(198, 247, 239);
+    --tw-text-opacity: 1;
+    color: rgb(83 110 164 / var(--tw-text-opacity));
+    padding-bottom: .8rem;
+    padding-top: .8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .375rem;
+    width: 10rem;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.buyBtn i {
+    margin-left: 9px;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.watchBtn {
+    background-image: linear-gradient(88deg, #536ea4 -19.5%, #32e5ff 106.04%);
+    padding: 0.8rem 1rem;
+    color: #fff;
+    border-radius: 5px;
+    border-bottom-right-radius: 1.5rem;
+    border: 2px solid rgb(255, 255, 255);
+    margin-left: 20px;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.watchBtn i {
+    margin-left: 9px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+
+
+@media only screen and (max-width: 648px) {
+    .product-details {
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .product-details .product-txt {
+        margin-left: 0;
+    }
+
+    .buttons {
+        align-items: normal;
+        justify-content: normal;
+    }
+} 

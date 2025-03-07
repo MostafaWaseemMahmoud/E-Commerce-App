@@ -1,0 +1,42 @@
+.signup {
+    margin-top: 50px;
+} 
+
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.form form input {
+    width: 200px;
+    margin-top: 20px;
+    height: 24px;
+    border-radius: 6px;
+    outline: none;
+    border: #2b3445 double 11px;
+    padding: 20px;
+}
+
+#file {
+    display:none;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: double #2b3445 11px
+}
+
+.form form button {
+    margin-top: 20px;
+}

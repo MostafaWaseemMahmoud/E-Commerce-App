@@ -1,0 +1,132 @@
+.cart-section {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.cart-section .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-heading {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    margin-left: 54px;
+}
+
+.cart-section .orders {
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cart-section .product {
+    display: flex;
+    align-items: center;
+    min-width: 717px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-left: 0px;
+}
+
+.cart-section .product:hover {
+    transform: scale(1.05);
+}
+
+.cart-section  .img {
+    background-color: #e5e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 117px;
+    padding: 27px;
+    min-width: 117px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+    background-color: #e5e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 117px;
+    padding: 27px;
+    max-width: 116px;
+    border-radius: 10px;
+    opacity: .9;
+    animation: fadeIn 1s ease-in-out forwards infinite;
+}
+
+@keyframes fadeIn {
+    50% {
+        opacity: 1;
+    }
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cart-section  .product-desc {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.cart-section  .product-desc h1 {
+    font-size: 18px;
+    color: #333;
+}
+
+.cart-section .category {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+}
+
+.cart-section  .price {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+ .order-summary {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 19px;
+    max-height: 307px;
+}
+
+.order-summary .section-heading {
+    padding-right: 100px;
+}
+
+
+.item {
+    width: 100%;
+    align-items: center;justify-content: space-between;
+    display: flex;
+}
+
+.item p {
+    font-family: sans-serif;
+}
+
+.order-summary .watchBtn {
+    margin-left: 0;
+    height: 62px;
+    width: 400px;
+}
+
+
+@media only screen and (max-width: 1244px) {
+    .cart-section .content {
+        flex-direction: column;
+    }
+    .cart-section .product {
+        min-width: 100%;
+    }
+}

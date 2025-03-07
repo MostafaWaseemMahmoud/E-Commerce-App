@@ -1,0 +1,89 @@
+/* Checkout Form Styling */
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Message */
+.success-message {
+    padding: 15px;
+    background: #28a745;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Input Box Styling */
+.input-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-box label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* Card Element Box */
+.card-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-box label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Stripe CardElement Styling */
+.card-element {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+/* Submit Button */
+.checkout-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.checkout-form button:hover {
+    background: #0056b3;
+}
+
+.checkout-form button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}

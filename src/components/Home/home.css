@@ -1,0 +1,145 @@
+.home {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color:rgb(241 245 249);
+}
+
+.home .heading {
+    margin-top: 30px;
+    text-transform: uppercase;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.home .categories {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+.home .categories .category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.home .categories .category-item .cate-img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .categories .category-item img {
+    max-width: 100%;
+    height: 61%;
+    transition: .4s;
+    mix-blend-mode: multiply;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    vertical-align: middle;
+    object-fit: scale-down;
+}
+
+.cate-img:hover img{
+    transform: scale(1.2) rotate(3deg);
+}
+
+.home .categories h1 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.mobiles-div {
+    margin-left: 70px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.mobiles-div .sectionHeading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 100;
+}
+.product{
+    max-width: 254px;
+    transition: .2s;
+}
+.product i {
+    font-size:23px;
+    margin-left:20px;
+    background-color: rgb(231, 209, 209);
+    padding: 13px;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+
+.product i:hover {
+    background-color: #6fdedc;
+    color: #fff;
+}
+
+
+
+
+.product .desc-txt{
+    margin: 20px;
+}
+.product .desc-txt h3{
+    color:black;
+}
+
+
+.product .img{
+    background-color: #e5e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 197px;
+    padding: 27px;
+    max-width: 200px;
+}
+
+.product .img img {
+    height: 158px;
+    mix-blend-mode: multiply;
+}
+
+.category {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.price {
+    color: #6fdedc;
+}
+.product:hover{
+    transform:scale(1.1);
+}
+
+
+@media only screen and (max-width: 302px) {
+    .categories {
+        flex-direction: column;
+    }
+}  
