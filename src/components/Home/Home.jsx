@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import ArrivalProducts from '../ArrivalProducts/Arrival';
 
 const Home = ({ setOrderLength }) => {
-    const BaseApi = "https://e-commerce-backend-app.up.railway.app/";
+    const BaseApi = "https://e-commerce-backend-app.up.railway.app";
     const navigate = useNavigate();
     const [allProducts, setAllProducts] = useState([]);
     const [allCategories, setAllCategories] = useState([]);
