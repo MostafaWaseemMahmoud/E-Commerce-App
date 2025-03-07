@@ -27,7 +27,7 @@ const Header = ({ orderLength }) => {
         <>
         <header>
             <div className="logo" onClick={() => navigate("/")}> 
-                <img src="../../../public/Lumeo (2).png" alt="logo" />
+                <img src="/Lumeo (2).png" alt="logo" />
                 <h1>Lumeo</h1>
             </div>
             <div className="search-div">

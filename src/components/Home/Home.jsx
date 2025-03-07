@@ -125,12 +125,12 @@ const Home = ({ setOrderLength }) => {
                             <img
                                 src={
                                     category === "Mobiles"
-                                        ? "../../../public/Opera Snapshot_2025-02-26_210440_res.cloudinary.com.png"
+                                        ? "/Opera Snapshot_2025-02-26_210440_res.cloudinary.com.png"
                                         : category === "Airpods"
-                                        ? "../../../public/airpods phone.png"
+                                        ? "/airpods phone.png"
                                         : category === "Camera"
-                                        ? "../../../public/camera.png"
-                                        : "../../public/Lumeo"
+                                        ? "/camera.png"
+                                        : "/Lumeo.png"
                                 }
                                 alt={category}
                             />

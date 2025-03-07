@@ -6,12 +6,12 @@ export default function ResponsiveModule() {
   const [instance, setInstance] = useState("instance1");
 
   function BlackModel(props) {
-    const { scene } = useGLTF('../../../public/iphone1.glb');
+    const { scene } = useGLTF('./iphone1.glb');
     return <primitive object={scene} {...props} />;
   }
   
   function BlueModel(props) {
-    const { scene } = useGLTF('../../../public/iphone.glb');
+    const { scene } = useGLTF('./iphone.glb');
     return <primitive object={scene} {...props} />;
   }
 
