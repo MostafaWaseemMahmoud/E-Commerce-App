@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './home.css';
-import Scene from '../3dmodel/Scene';
 import axios from 'axios';
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from "swiper/react";
+import Scene from '../3dmodel/Scene';
 import ArrivalProducts from '../ArrivalProducts/Arrival';
+import './home.css';
 
 const Home = ({ setOrderLength }) => {
     const BaseApi = "https://e-commerce-backend-app.up.railway.app";
@@ -17,7 +17,7 @@ const Home = ({ setOrderLength }) => {
     const [allProducts, setAllProducts] = useState([]);
     const [allCategories, setAllCategories] = useState([]);
     const UserId = window.localStorage.getItem("id");
-    
+    const [IsLoading,SetIsLoading] = useState(null);
     const updateOrderLength = async () => {
         try {
             const response = await axios.post("https://e-commerce-backend-app.up.railway.app/manageorder/allorders");
@@ -36,6 +36,7 @@ const Home = ({ setOrderLength }) => {
     }, []);
 
     const getAllProducts = async () => {
+        SetIsLoading(true)
         try {
             const res = await axios.get(BaseApi+"/admindashboard/getallproducts", {
                 headers: { authorization: "lkjfdafdsalkjfdalkfdlkjafdas" }
@@ -45,6 +46,7 @@ const Home = ({ setOrderLength }) => {
                 setAllProducts(res.data.message);
                 extractCategories(res.data.message);
             }
+            SetIsLoading(false)
         } catch (error) {
             console.error("Error fetching products:", error);
         }
@@ -63,7 +65,7 @@ const Home = ({ setOrderLength }) => {
         if(!window.localStorage.getItem("id")){
             return toast.warn("SignIn First Please!", { theme: "light" });
         }
-        
+
         const res1 = await axios.get(BaseApi+`/user/findone/${window.localStorage.getItem("id")}`);
 
         for (let i = 0; i < res1.data.message.watchingList.length; i++) {
@@ -89,7 +91,7 @@ const Home = ({ setOrderLength }) => {
         try {
             const allOrdersData = await axios.post(`${BaseApi}/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
-    
+
             for (let i = 0; i < allOrders.length; i++) {
                 const order = allOrders[i];
                 if(order.item.productId == productId){
@@ -98,7 +100,7 @@ const Home = ({ setOrderLength }) => {
             }
             const res = await axios.post(`${BaseApi}/manageorder/addorder`,{
                 userId: id,
-                itemId: productId 
+                itemId: productId
             })
             setOrderLength(prev => prev + 1);
             return toast.success(`${res.data.message}`, { theme: "light" });
@@ -119,25 +121,28 @@ const Home = ({ setOrderLength }) => {
             </div>
 
             <div className="categories">
-                {allCategories.map((category, index) => (
-                    <div key={index} className="category-item">
-                        <div className="cate-img">
-                            <img
-                                src={
-                                    category === "Mobiles"
-                                        ? "/Opera Snapshot_2025-02-26_210440_res.cloudinary.com.png"
-                                        : category === "Airpods"
-                                        ? "/airpods phone.png"
-                                        : category === "Camera"
-                                        ? "/camera.png"
-                                        : "/Lumeo.png"
-                                }
-                                alt={category}
-                            />
-                        </div>
-                        <h1>{category}</h1>
+            {IsLoading ? <div className='loading'>
+                <div className="loading-cycle">Loading..</div>
+            </div>
+             :allCategories.map((category, index) => (
+                <div key={index} className="category-item">
+                    <div className="cate-img">
+                        <img
+                            src={
+                                category === "Mobiles"
+                                    ? "/Opera Snapshot_2025-02-26_210440_res.cloudinary.com.png"
+                                    : category === "Airpods"
+                                    ? "/airpods phone.png"
+                                    : category === "Camera"
+                                    ? "/camera.png"
+                                    : "/Lumeo.png"
+                            }
+                            alt={category}
+                        />
                     </div>
-                ))}
+                    <h1>{category}</h1>
+                </div>
+            ))}
             </div>
 
             <ArrivalProducts />
@@ -161,8 +166,11 @@ const Home = ({ setOrderLength }) => {
     }}
     className="my-6"
 >
-
-                            {allProducts.filter((product) => product.category === category).map((product) => (
+                            {
+                                IsLoading ? <div className="loading">
+                                    <div className="loading-cycle">Loading..</div>
+                                </div> :
+                            allProducts.filter((product) => product.category === category).map((product) => (
                                 <SwiperSlide key={product._id} className="p-4 border rounded-lg">
                                     <div className="product">
                                         <div className="img" onClick={() => navigate(`/product/${product._id}`)}>

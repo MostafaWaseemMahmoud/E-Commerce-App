@@ -142,4 +142,32 @@
     .categories {
         flex-direction: column;
     }
-}  
+}
+
+
+
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.loading-cycle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    animation: loading 1s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
