@@ -22,9 +22,7 @@ const Header = ({ orderLength }) => {
             product.name?.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-        setFilteredProducts(filtered.length > 0 ? filtered : [{
-            name: " notFound"
-        }]);
+        setFilteredProducts(filtered)
     }, [searchTerm, products]);
     return (
         <>
@@ -45,7 +43,7 @@ const Header = ({ orderLength }) => {
                 </div>
                 {searchTerm && (
     <ul className="search-results">
-        {!products.image ? (
+        {filteredProducts.length == 0 ? (
             <li className="not-found">
                 <h3>No Products Found</h3>
             </li>
