@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './header.css';
 import { Link, useNavigate } from 'react-router-dom';
+import './header.css';
 
 const Header = ({ orderLength }) => {
     const [isAuth, setAuth] = useState(null);
@@ -18,39 +18,48 @@ const Header = ({ orderLength }) => {
     }, []);
 
     useEffect(() => {
-        setFilteredProducts(
-            products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        const filtered = products.filter(product =>
+            product.name?.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    }, [searchTerm, products]);
 
+        setFilteredProducts(filtered.length > 0 ? filtered : [{
+            name: " notFound"
+        }]);
+    }, [searchTerm, products]);
     return (
         <>
         <header>
-            <div className="logo" onClick={() => navigate("/")}> 
+            <div className="logo" onClick={() => navigate("/")}>
                 <img src="/Lumeo (2).png" alt="logo" />
                 <h1>Lumeo</h1>
             </div>
             <div className="search-div">
                 <div className="search-bar">
-                    <input 
-                        type="text" 
-                        placeholder='Search By Product name' 
-                        value={searchTerm} 
+                    <input
+                        type="text"
+                        placeholder='Search By Product name'
+                        value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
                 {searchTerm && (
-                    <ul className="search-results">
-                        {filteredProducts.map(product => (
-                            <li key={product.id} onClick={() => {navigate(`/product/${product._id}`); setSearchTerm("")}}>
-                                <img src={product.image} alt="" srcset="" />
-                                {product.name}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
+    <ul className="search-results">
+        {!products.image ? (
+            <li className="not-found">
+                <h3>No Products Found</h3>
+            </li>
+        ) : (
+            filteredProducts.map(product => (
+                <li key={product.id} onClick={() => {navigate(`/product/${product._id}`); setSearchTerm("")}}>
+                    <img src={product.image} alt={product.name} />
+                    <h3>{product.name}</h3>
+                </li>
+            ))
+        )}
+    </ul>
+)}
+                </div>
             <div className='btns'>
                 {isAuth ? (
                     <>

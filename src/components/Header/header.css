@@ -137,42 +137,50 @@ header .btns i:hover {
     color: #ffff;
 }
 
+/* تنسيق قائمة نتائج البحث */
 .search-results {
-        position: absolute;
-    background-color: #ffff;
-    width: 100%;
+    position: absolute;
+    top: 45px;
     left: 0;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
 }
 
-li {
-    display: inline-block;
-    margin-top: 13px;
-    background-color: #c5d3eb;
-    padding: 6px;
-    overflow: hidden;
+/* تنسيق كل عنصر داخل النتائج */
+.search-results li {
     display: flex;
     align-items: center;
-    justify-items: center;
-    min-width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 68px;
-    border-radius: 20px;
-    margin-right: 68px;
-    padding: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-li img {
-    max-width: 31px;
-    margin-right: 20px;
+.search-results li:hover {
+    background: #f8f8f8;
 }
 
-@media only screen and (max-width: 636px) {
+/* تنسيق صورة المنتج */
+.search-results li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* تنسيق اسم المنتج */
+.search-results li h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+@media only screens and (max-width: 636px) {
     .search-bar {
         width: 283px;
     }
@@ -186,7 +194,7 @@ li img {
     .logo img {
         display: none;
     }
-    
+
     .logo h1 {
         font-size: 20px;
     }
@@ -212,7 +220,7 @@ li img {
     }
     .search-div {
         display: none;
-    } 
+    }
     .logo img {
         display: block;
     }
