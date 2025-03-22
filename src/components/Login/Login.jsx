@@ -57,7 +57,6 @@ const Login = () => {
                         });
 
                         window.localStorage.setItem("id" , user._id)
-                        window.location.reload();
                         Navigate("/")
                         // Redirect or update UI as needed
                     } else {

@@ -35,8 +35,7 @@ const Verify = () => {
                 window.localStorage.removeItem('otp')
             })
             toast.success("User registered successfully!", { theme: "dark" });
-            window.location.reload();
-              Navigate("/")
+            Navigate("/")
             } catch (error) {
               toast.error("Error while adding a user!", { theme: "dark" });
             }

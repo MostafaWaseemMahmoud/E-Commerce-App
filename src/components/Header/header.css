@@ -123,7 +123,6 @@ header .btns i:hover {
 
 .cart-l {
     background-color: #536ea4;
-    position: absolute;
     padding: 7px 10px;
     max-width: 11px;
     max-height: 11px;
@@ -135,6 +134,7 @@ header .btns i:hover {
     justify-content: center;
     text-align: center;
     color: #ffff;
+    margin-left: 12px;
 }
 
 /* تنسيق قائمة نتائج البحث */

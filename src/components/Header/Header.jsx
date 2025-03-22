@@ -24,6 +24,8 @@ const Header = ({ orderLength }) => {
 
         setFilteredProducts(filtered)
     }, [searchTerm, products]);
+
+    setInterval(()=> {setAuth(window.localStorage.getItem("id") ? true : false);}, 1000)
     return (
         <>
         <header>
