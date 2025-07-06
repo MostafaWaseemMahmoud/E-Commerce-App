@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./signup.css";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "./signup.css";
 
 const Signup = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -15,7 +15,7 @@ const Signup = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("https://e-commerce-backend-app.up.railway.app/user/all",{
+        const res = await axios.get("https://e-commerce-backend-g3yp.vercel.app/user/all",{
             headers: {
                 Authorization: "lkjfdafdsalkjfdalkfdlkjafdas",
             }
@@ -56,7 +56,7 @@ const Signup = () => {
     if (password !== confirmPassword) {
       return toast.error("Passwords do not match!", { theme: "dark" });
     }
-    
+
     for (let i = 0; i < allUsers.length; i++) {
         const element = allUsers[i];
         if(element.email === email){

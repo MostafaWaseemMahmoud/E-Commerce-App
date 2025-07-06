@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 
@@ -11,7 +11,7 @@ const Header = ({ orderLength }) => {
 
     useEffect(() => {
         setAuth(window.localStorage.getItem("id") ? true : false);
-        fetch("https://e-commerce-backend-app.up.railway.app/admindashboard/getallproducts")
+        fetch("https://e-commerce-backend-g3yp.vercel.app/admindashboard/getallproducts")
             .then(response => response.json())
             .then(data => setProducts(data.message))
             .catch(error => console.error("Error fetching products:", error));

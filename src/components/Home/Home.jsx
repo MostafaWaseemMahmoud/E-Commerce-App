@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "swiper/css";
@@ -20,7 +20,7 @@ const Home = ({ setOrderLength }) => {
     const [IsLoading,SetIsLoading] = useState(null);
     const updateOrderLength = async () => {
         try {
-            const response = await axios.post("https://e-commerce-backend-app.up.railway.app/manageorder/allorders");
+            const response = await axios.post("https://e-commerce-backend-g3yp.vercel.app/manageorder/allorders");
             const allOrders = response.data.message;
             let count = allOrders.filter(order => order.userId === UserId).length;
             setOrderLength(count);

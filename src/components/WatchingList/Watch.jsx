@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import "./watch.css";
 import axios from 'axios';
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { toast, ToastContainer } from "react-toastify";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import { toast,ToastContainer } from "react-toastify";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./watch.css";
 
 const WatchingList = () => {
     const [watchingList, setWatchingList] = useState([]);
@@ -18,7 +18,7 @@ const WatchingList = () => {
     const getAllProducts = async (productIds) => {
         try {
             const productRequests = productIds.map((productId) =>
-                axios.get(`https://e-commerce-backend-app.up.railway.app/admindashboard/getoneproduct/${productId}`)
+                axios.get(`https://e-commerce-backend-g3yp.vercel.app/admindashboard/getoneproduct/${productId}`)
             );
 
             const responses = await Promise.all(productRequests);
@@ -39,7 +39,7 @@ const WatchingList = () => {
         }
 
         try {
-            const res1 = await axios.get(`https://e-commerce-backend-app.up.railway.app/user/findone/${userId}`);
+            const res1 = await axios.get(`https://e-commerce-backend-g3yp.vercel.app/user/findone/${userId}`);
 
             const userWatchingList = res1.data.message.watchingList || [];
             setWatchingList(userWatchingList);
@@ -65,20 +65,20 @@ const WatchingList = () => {
         }
 
         try {
-            const allOrdersData = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/allorders`);
+            const allOrdersData = await axios.post(`https://e-commerce-backend-g3yp.vercel.app/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
-    
+
             for (let i = 0; i < allOrders.length; i++) {
                 const order = allOrders[i];
                 if(order.item.productId == productId){
                     return toast.warn(`This Order Is Already Exist In Your Cart`, { theme: "light" });
                 }
             }
-            const res = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/addorder`,{
+            const res = await axios.post(`https://e-commerce-backend-g3yp.vercel.app/manageorder/addorder`,{
                 userId: id,
-                itemId: productId 
+                itemId: productId
             })
-            setOrderLength(prev => prev + 1);   
+            setOrderLength(prev => prev + 1);
             return toast.success(`${res.data.message}`, { theme: "light" });
         } catch (error) {
             console.log("Error While Adding An Order" , error);

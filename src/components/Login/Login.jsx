@@ -1,13 +1,13 @@
-import React, { createRef, useEffect, useRef, useState } from 'react';
-import './login.css'
-import { Link, Navigate,useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import './login.css';
 const Login = () => {
     const Navigate = useNavigate();
     const [reqData,setReqData] = useState(null);
     useEffect(()=>{
-        axios.get("https://e-commerce-backend-app.up.railway.app/user/all", {
+        axios.get("https://e-commerce-backend-g3yp.vercel.app/user/all", {
             headers: {
                 'Authorization': 'lkjfdafdsalkjfdalkfdlkjafdas',
             }
@@ -36,13 +36,13 @@ const Login = () => {
                     theme: "dark",
                 });
             }
-        
+
             for (let i = 0; i < reqData.length; i++) {
                 const user = reqData[i];
-        
+
                 if (user.email === inputEmail.current.value) {
                     userFound = true;
-        
+
                     if (user.password === inputPassword.current.value) {
                         console.log("Login successful:", user);
                         toast.success("Login Successful!", {
@@ -74,7 +74,7 @@ const Login = () => {
                     break; // Stop looping once the user is found
                 }
             }
-        
+
             if (!userFound) {
                 toast.error("Email Not Found", {
                     position: "top-right",

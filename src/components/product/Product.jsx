@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './products.css';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import ArrivalProducts from '../ArrivalProducts/Arrival';
+import './products.css';
 
 const Product = () => {
     const { id } = useParams();
@@ -13,7 +13,7 @@ const Product = () => {
     const getProduct = async () => {
         setIsLoading(true);
         try {
-            const res = await axios.get(`https://e-commerce-backend-app.up.railway.app/admindashboard/getoneproduct/${id}`);
+            const res = await axios.get(`https://e-commerce-backend-g3yp.vercel.app/admindashboard/getoneproduct/${id}`);
             setProduct(res.data.message);
         } catch (error) {
             console.error("Error fetching product:", error);
@@ -32,13 +32,13 @@ const Product = () => {
         }
 
         try {
-            const res1 = await axios.get(`https://e-commerce-backend-app.up.railway.app/user/findone/${userId}`);
+            const res1 = await axios.get(`https://e-commerce-backend-g3yp.vercel.app/user/findone/${userId}`);
 
             if (res1.data.message.watchingList.includes(productid)) {
                 return toast.warn("This Product is Already in Your Watching List!", { theme: "light" });
             }
 
-            await axios.post(`https://e-commerce-backend-app.up.railway.app/user/addwacthinglist/${userId}/${productid}`, {}, {
+            await axios.post(`https://e-commerce-backend-g3yp.vercel.app/user/addwacthinglist/${userId}/${productid}`, {}, {
                 headers: { authorization: "lkjfdafdsalkjfdlkjafdas" }
             });
 
@@ -55,20 +55,20 @@ const Product = () => {
         }
 
         try {
-            const allOrdersData = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/allorders`);
+            const allOrdersData = await axios.post(`https://e-commerce-backend-g3yp.vercel.app/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
-    
+
             for (let i = 0; i < allOrders.length; i++) {
                 const order = allOrders[i];
                 if(order.item.productId == productId){
                     return toast.warn(`This Order Is Already Exist In Your Cart`, { theme: "light" });
                 }
             }
-            const res = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/addorder`,{
+            const res = await axios.post(`https://e-commerce-backend-g3yp.vercel.app/manageorder/addorder`,{
                 userId: id,
-                itemId: productId 
+                itemId: productId
             })
-            setOrderLength(prev => prev + 1);   
+            setOrderLength(prev => prev + 1);
             return toast.success(`${res.data.message}`, { theme: "light" });
         } catch (error) {
             console.log("Error While Adding An Order" , error);

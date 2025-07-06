@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
-import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from "react-toastify";
-import axios from 'axios';
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const ArrProduct = () => {
     const navigate = useNavigate();
@@ -28,8 +28,8 @@ const ArrProduct = () => {
         if(!window.localStorage.getItem("id")){
             return toast.warn("SignIn First Please!", { theme: "light" });
         }
-        
-        const res1 = await axios.get(`https://e-commerce-backend-app.up.railway.app/user/findone/67c08e3958df0fa5d0f3dfce`);
+
+        const res1 = await axios.get(`https://e-commerce-backend-g3yp.vercel.app/user/findone/67c08e3958df0fa5d0f3dfce`);
 
         for (let i = 0; i < res1.data.message.watchingList.length; i++) {
             if(res1.data.message.watchingList[i] === productid){
@@ -38,7 +38,7 @@ const ArrProduct = () => {
         }
 
         try {
-            await axios.post(`https://e-commerce-backend-app.up.railway.app/user/addwacthinglist/${window.localStorage.getItem('id')}/${productid}`);
+            await axios.post(`https://e-commerce-backend-g3yp.vercel.app/user/addwacthinglist/${window.localStorage.getItem('id')}/${productid}`);
             return toast.success("Product Added To Your Watching List!", { theme: "light" });
         } catch (error) {
             console.error("Error adding to watchlist:", error);
@@ -52,20 +52,20 @@ const ArrProduct = () => {
         }
 
         try {
-            const allOrdersData = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/allorders`);
+            const allOrdersData = await axios.post(`https://e-commerce-backend-g3yp.vercel.app/manageorder/allorders`);
             const allOrders = allOrdersData.data.message;
-    
+
             for (let i = 0; i < allOrders.length; i++) {
                 const order = allOrders[i];
                 if(order.item.productId == productId){
                     return toast.warn(`This Order Is Already Exist In Your Cart`, { theme: "light" });
                 }
             }
-            const res = await axios.post(`https://e-commerce-backend-app.up.railway.app/manageorder/addorder`,{
+            const res = await axios.post(`https://e-commerce-backend-g3yp.vercel.app/manageorder/addorder`,{
                 userId: id,
-                itemId: productId 
+                itemId: productId
             })
-            setOrderLength(prev => prev + 1);   
+            setOrderLength(prev => prev + 1);
             return toast.success(`${res.data.message}`, { theme: "light" });
         } catch (error) {
             console.log("Error While Adding An Order" , error);
@@ -76,7 +76,7 @@ const ArrProduct = () => {
     const ReadAllData = async () => {
         SetLoading(true);
         try {
-            const response = await axios.get("https://e-commerce-backend-app.up.railway.app/admindashboard/getallproducts", {
+            const response = await axios.get("https://e-commerce-backend-g3yp.vercel.app/admindashboard/getallproducts", {
                 headers: { authorization: "lkjfdafdsalkjfdalkfdlkjafdas" }
             });
 
@@ -117,7 +117,7 @@ const ArrProduct = () => {
                         className="my-6"
                     >
                         {ArrivalProducts.map((product) => (
-                            <SwiperSlide key={product.id} className="swiper-slide-custom" onClick={() => navigate("/arrival-products")}> 
+                            <SwiperSlide key={product.id} className="swiper-slide-custom" onClick={() => navigate("/arrival-products")}>
                                 <img src={product.src} alt="Arrival Product" className="product-image" />
                             </SwiperSlide>
                         ))}
